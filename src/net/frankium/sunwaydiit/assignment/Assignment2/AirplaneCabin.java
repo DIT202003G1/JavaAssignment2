@@ -10,7 +10,7 @@ public class AirplaneCabin {
 	private static final boolean O = true; //Occupied
 	private static final boolean U = false; //Unoccupied
 	private static final Map<Character,Integer> COL_MAP = new HashMap<Character,Integer>(){{for(int i = 0; i < 6 ; i ++){ put((char)('A' + (char) i),i); }}};
-	private int[] CLASSES_DISTRIBUTION;
+	private final int[] CLASSES_DISTRIBUTION;
 	private List<Boolean[]> seatsState = new ArrayList<Boolean[]>();
 	public AirplaneCabin(int[] classesDistribution){
 		this.CLASSES_DISTRIBUTION = classesDistribution;
@@ -22,7 +22,7 @@ public class AirplaneCabin {
 		return !(seatsState.get(row - 1)[COL_MAP.get(col)]);
 	}
 	public void setSeatState(int row, char col, boolean stateOccupied){
-		seatsState.get(row)[COL_MAP.get(col)] = stateOccupied;
+		seatsState.get(row - 1)[COL_MAP.get(col)] = stateOccupied;
 	}
 	public void displaySeatTable(){
 		String message = "\n    CLASS TYPE   ROWS           COLUMNS\n\n                         A   B   C   D   E   F\n\n";
@@ -41,5 +41,9 @@ public class AirplaneCabin {
 			message += "\n";
 		}
 		System.out.print(message);
+		System.out.println("[* = Available Seat, X = Occupied Seat]");
+	}
+	public int[] getCLASSES_DISTRIBUTION (){
+		return this.CLASSES_DISTRIBUTION;
 	}
 }
