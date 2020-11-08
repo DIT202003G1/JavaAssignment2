@@ -46,6 +46,7 @@ public class Question2 {
 					if (cabin.isSpaceEmpty(rowChoice,columnChoice)){
 						cabin.setSeatState(rowChoice,columnChoice,true);
 						System.out.println("Booked!");
+						cabin.displaySeatTable();
 					}else System.out.println("Seat is already occupied!");
 					break;
 				case 2:
@@ -55,6 +56,9 @@ public class Question2 {
 			}
 		}
 	}
+	
+	//takes an array of string as menu items, will prompt and get user selection, handle unexpected inputs
+	//and returns the number of user selection
 	private static int getMenuOption(String title, String[] options){
 		System.out.println("\n|================================");
 		while (true){

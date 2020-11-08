@@ -33,17 +33,15 @@ public class AirplaneCabin {
 			else message += "                 ";
 			String s =new String(new char[8 - Integer.toString(i+1).length()]).replace("\0", " ");
 			message += i+1 + s;
-			for (int j = 0; j < 6; j++){
-				if (seatsState.get(i)[j]) message += INDICATIONS[0];
-				else message += INDICATIONS[1];
-				message += "   ";
-			}
+			for (int j = 0; j < 6; j++) message += (seatsState.get(i)[j] ? INDICATIONS[0] : INDICATIONS[1]) + "   ";
 			message += "\n";
 		}
 		System.out.print(message);
-		System.out.println("[* = Available Seat, X = Occupied Seat]");
+		System.out.println("["+ INDICATIONS[1] +" = Available Seat, "+INDICATIONS[0]+" = Occupied Seat]");
 	}
 	public int[] getCLASSES_DISTRIBUTION (){
 		return this.CLASSES_DISTRIBUTION;
 	}
+	//todo:
+	// -  is classes(first class, business class, econ class) full?
 }
